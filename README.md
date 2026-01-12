@@ -3,7 +3,7 @@
 By default, on UNIX-based OS's matplotlib looks for user-defined stylessheets in `~/.config/matplotlib/stylelib`. 
 
 On Windows, I don't know where it looks but you can check where matplotlib is searching by using their Python API to query paths:
-```
+```python
 import matplotlib as mpl
 import matplotlib.style.core as msc
 
@@ -17,16 +17,17 @@ print("\nStyle search paths:")
 for p in msc.USER_LIBRARY_PATHS:
     print(p)
 print(msc.BASE_LIBRARY_PATH)
+```
+```text
+Config dir:
+/home/ray/.config/matplotlib
 
-> Config dir:
-> /home/ray/.config/matplotlib
->
-> Data dir:
-> /home/ray/.cache/uv/builds-v0/.tmpmiFQo2/lib/python3.12/site-packages/matplotlib/mpl-data
-> 
-> Style search paths:
-> /home/ray/.config/matplotlib/stylelib <-- global config, independent of your particular venv
-> /home/ray/.cache/uv/builds-v0/.tmpmiFQo2/lib/python3.12/site-packages/matplotlib/mpl-data/stylelib <-- this is local to a UV virtual environment
+Data dir:
+/home/ray/.cache/uv/builds-v0/.tmpmiFQo2/lib/python3.12/site-packages/matplotlib/mpl-data
+
+Style search paths:
+/home/ray/.config/matplotlib/stylelib        # global config, independent of venv
+/home/ray/.cache/uv/builds-v0/.tmpmiFQo2/lib/python3.12/site-packages/matplotlib/mpl-data/stylelib      # local config, 
 ```
 
 On Linux you can simply use the following command.
